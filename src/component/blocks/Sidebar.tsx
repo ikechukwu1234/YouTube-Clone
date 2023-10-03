@@ -21,334 +21,171 @@ import {LuSettings} from "react-icons/lu"
 import {MdOutlineOutlinedFlag} from "react-icons/md"
 import {MdOutlineFeedback} from "react-icons/md"
 import {FiHelpCircle} from "react-icons/fi"
-import { NavLink } from 'react-router-dom'
+import NavReuse from '../Commons/NavReuse'
 
 const Container = styled.div`
   width: 220px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px,
   rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
   position: fixed;
-  top: 80px;
+  top: 70px;
   right: 0;
   left: 0;
   bottom: 0;
   color: black;
-  background-color: white;
+  background-color: black;
+  overflow-y: scroll;
 `
 
 
 
-const IconHold = styled(NavLink)`
- display: flex;
- padding: 10px;
- gap:8px;
- margin-left: 20px;
-`
-const Span = styled.div`
-font-size: 15px
-`
 const Div = styled.div`
- margin-left: 23px;
- font-size: 18px
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
-
 
 const Sidebar:React.FC = () =>{
   return(
     <Container>
-        <IconHold
-         to ="/"
-         style ={({isActive})=>{
-            return{
-                color: isActive? "black": "black",
-                /* background: isActive? "rgba(248, 233, 233, 0.5)": "transparent", */
-                textDecoration: "none"
-            }
-         }}
-        >
-            <AiFillHome/>
-            <Span>Home</Span>
-        </IconHold>
-        <IconHold
-        to ="/Short"
-        style ={({isActive})=>{
-           return{
-               color: isActive? "black": "black",
-               /* background: isActive? "rgba(248, 233, 233, 0.5)": "transparent",
-               textDecoration: "none" */
-           }
-        }}
-        >
-            <SiShortcut/>
-            <Span>Short</Span>
-        </IconHold>
-        <IconHold
-        to ="/Subscription"
-        style ={({isActive})=>{
-           return{
-               color: isActive? "black": "black",
-               /* background: isActive? "rgba(248, 233, 233, 0.5)": "transparent",
-               textDecoration: "none" */
-           }
-        }}
-        >
-            <MdOutlineSubscriptions/>
-            <Span>Subscription</Span>
-        </IconHold>
+        <NavReuse
+        text= "Home"
+        icon= {<AiFillHome />}
+         linkTo="/"
+         />
+        <NavReuse
+        text='Short'
+        icon={<SiShortcut/>}
+        linkTo ="/Short"
+        />
+        
+        <NavReuse
+        text='Subscription'
+        icon={<MdOutlineSubscriptions/>}
+        linkTo="/Subscription"
+        />
+        <Div>————————————</Div>
+      
         <br />
-        <IconHold
-        to ="/Library"
-        style ={({isActive})=>{
-           return{
-               color: isActive? "black": "black",
-               background: isActive? "rgba(248, 233, 233, 0.5)": "transparent",
-               textDecoration: "none"
-           }
-        }}
-        >
-            <MdOutlineVideoLibrary/>
-            <Span>Library</Span>
-        </IconHold>
-        <IconHold
-        to ="/History"
-        style ={({isActive})=>{
-           return{
-               color: isActive? "black": "black",
-               background: isActive? "rgba(248, 233, 233, 0.5)": "transparent",
-               textDecoration: "none"
-           }
-        }}
-        >
-            <GoHistory/>
-            <Span>History</Span>
-        </IconHold>
-      <IconHold
-      to ="/"
-      style ={({isActive})=>{
-         return{
-             color: isActive? "gray": "black",
-             background: isActive? "rgba(248, 233, 233, 0.5)": "transparent",
-             textDecoration: "none"
-         }
-      }}
-      >
-            <BiVideoPlus/>
-            <Span>Your video</Span>
-        </IconHold>
-        <IconHold
-        to ="/Watchlater"
-        style ={({isActive})=>{
-           return{
-               color: isActive? "black": "black",
-               /* background: isActive? "rgba(248, 233, 233, 0.5)": "transparent",
-               textDecoration: "none" */
-           }
-        }}
-        >
-            <BsClock/>
-            <Span>Watch later</Span>
-        </IconHold>
-        <IconHold
-        to ="/LikedVideos"
-        style ={({isActive})=>{
-           return{
-               color: isActive? "gray": "black",
-               background: isActive? "rgba(248, 233, 233, 0.5)": "transparent",
-               textDecoration: "none"
-           }
-        }}
-        >
-            <BiLike/>
-            <Span>Liked videos</Span>
-        </IconHold>
-        <IconHold
-        to ="/"
-        style ={({isActive})=>{
-           return{
-               color: isActive? "gray": "black",
-               background: isActive? "rgba(248, 233, 233, 0.5)": "transparent",
-               textDecoration: "none"
-           }
-        }}
-        >
-            <AiFillHome/>
-            <Span>Show more</Span>
-        </IconHold>
-         <br />
+        <NavReuse
+        text='Library'
+        icon={<MdOutlineVideoLibrary/>}
+         linkTo="/Library"
+         />
+       
+        
+        <NavReuse
+        text='History'
+        icon={   <GoHistory/>}
+        linkTo="/History"
+        />
+       
+      <NavReuse
+      text='Your video'
+      icon={ <BiVideoPlus/>}
+      linkTo="/Yourvideo"
+      />
+      
+        <NavReuse
+        text='Watch'
+        icon={ <BsClock/>}
+        linkTo="/Watch"
+        />
+        <NavReuse
+        text='Liked Videos'
+        icon={<BiLike/>}
+        linkTo="/LikedVideos"
+        />
+       
+        <NavReuse
+        text='Show More'
+        icon={<AiFillHome/>}
+        linkTo="/Showmore"
+        />
+
+<Div>————————————</Div>
+  
          <Div>Explore</Div>
-         <IconHold
-         to ="/"
-         style ={({isActive})=>{
-            return{
-                color: isActive? "gray": "black",
-                background: isActive? "rgba(248, 233, 233, 0.5)": "transparent",
-                textDecoration: "none"
-            }
-         }}
-         >
-            <FaFireFlameCurved/>
-            <Span>Trending</Span>
-        </IconHold>
-        <IconHold
-        to ="/"
-        style ={({isActive})=>{
-           return{
-               color: isActive? "gray": "black",
-               background: isActive? "rgba(248, 233, 233, 0.5)": "transparent",
-               textDecoration: "none"
-           }
-        }}
-        >
-            <PiMusicNote/>
-            <Span>Music</Span>
-        </IconHold>
-        <IconHold
-        to ="/"
-        style ={({isActive})=>{
-           return{
-               color: isActive? "gray": "black",
-               background: isActive? "rgba(248, 233, 233, 0.5)": "transparent",
-               textDecoration: "none"
-           }
-        }}
-        >
-            <SiYoutubegaming/>
-            <Span>Gaming</Span>
-        </IconHold>
-        <IconHold
-        to ="/"
-        style ={({isActive})=>{
-           return{
-               color: isActive? "gray": "black",
-               background: isActive? "rgba(248, 233, 233, 0.5)": "transparent",
-               textDecoration: "none"
-           }
-        }}
-        >
-            <BiNews/>
-            <Span>New</Span>
-        </IconHold>
-        <IconHold
-        to ="/"
-        style ={({isActive})=>{
-           return{
-               color: isActive? "gray": "black",
-               background: isActive? "rgba(248, 233, 233, 0.5)": "transparent",
-               textDecoration: "none"
-           }
-        }}
-        >
-            <BsTrophy/>
-            <Span>Spots</Span>
-        </IconHold>
-        <br />
+         
+    
+         <NavReuse
+         text='Trending'
+         icon={ <FaFireFlameCurved/>}
+         linkTo="/Trending"
+         />
+        
+        <NavReuse
+        text='Music'
+        icon={<PiMusicNote/>}
+        linkTo="/Music"
+        />
+        
+        <NavReuse
+        text='Gaming'
+        icon={<SiYoutubegaming/>}
+        linkTo ="/Gaming"
+        />
+       
+        <NavReuse
+        text='News'
+        icon={ <BiNews/>}
+        linkTo="/News"
+        />
+        <NavReuse
+        text='Sports'
+        icon={<BsTrophy/>}
+        linkTo ="/Sports"
+        />
+       <Div>————————————</Div>
        <Div>More from YouTube</Div>
-        <IconHold
-        to ="/"
-        style ={({isActive})=>{
-           return{
-               color: isActive? "gray": "black",
-               background: isActive? "rgba(248, 233, 233, 0.5)": "transparent",
-               textDecoration: "none"
-           }
-        }}
-        >
-            <AiFillYoutube/>
-            <Span>YouTube Premium</Span>
-        </IconHold>
-        <IconHold
-        to ="/"
-        style ={({isActive})=>{
-           return{
-               color: isActive? "gray": "black",
-               background: isActive? "rgba(248, 233, 233, 0.5)": "transparent",
-               textDecoration: "none"
-           }
-        }}
-        >
-            <SiYoutubestudio/>
-            <Span>YouTube Studio</Span>
-        </IconHold>
-        <IconHold
-        to ="/"
-        style ={({isActive})=>{
-           return{
-               color: isActive? "black": "white",
-               background: isActive? "rgba(248, 233, 233, 0.5)": "transparent",
-               textDecoration: "none"
-           }
-        }}
-        >
-            <SiYoutubemusic/>
-            <Span>YouTube Music</Span>
-        </IconHold>
-        <IconHold
-        to ="/"
-        style ={({isActive})=>{
-           return{
-               color: isActive? "black": "white",
-               background: isActive? "rgba(248, 233, 233, 0.5)": "transparent",
-               textDecoration: "none"
-           }
-        }}
-        >
-            <TbBrandYoutubeKids/>
-            <Span>YouTube Kids</Span>
-        </IconHold>
-        <br />
-        <IconHold
-        to ="/"
-        style ={({isActive})=>{
-           return{
-               color: isActive? "gray": "white",
-               background: isActive? "rgba(248, 233, 233, 0.5)": "transparent",
-               textDecoration: "none"
-           }
-        }}
-        >
-            <LuSettings/>
-            <Span>Settings</Span>
-        </IconHold>
-        <IconHold
-        to ="/"
-        style ={({isActive})=>{
-           return{
-               color: isActive? "gray": "white",
-               background: isActive? "rgba(248, 233, 233, 0.5)": "transparent",
-               textDecoration: "none"
-           }
-        }}
-        >
-            <MdOutlineOutlinedFlag/>
-            <Span>Report history</Span>
-        </IconHold>
-        <IconHold
-        to ="/"
-        style ={({isActive})=>{
-           return{
-               color: isActive? "gray": "white",
-               background: isActive? "rgba(248, 233, 233, 0.5)": "transparent",
-               textDecoration: "none"
-           }
-        }}
-        >
-            <FiHelpCircle/>
-            <Span>Help</Span>
-        </IconHold>
-        <IconHold
-        to ="/"
-        style ={({isActive})=>{
-           return{
-               color: isActive? "gray": "white",
-               background: isActive? "rgba(248, 233, 233, 0.5)": "transparent",
-               textDecoration: "none"
-           }
-        }}
-        >
-            <MdOutlineFeedback/>
-            <Span>Send feedback</Span>
-        </IconHold>
-        <br />
+        <NavReuse
+        text='YouTube Premium'
+        icon={<AiFillYoutube/>}
+        linkTo="/YouTubePremium"
+        />
+        
+        <NavReuse
+        text='YouTube Studio'
+        icon={<SiYoutubestudio/>}
+        linkTo="/YouTubeStudio"
+        />
+        
+        <NavReuse
+        text='YouTube Music'        
+        icon={<SiYoutubemusic />}
+        linkTo ="/YouTubeMusic"
+        />
+       
+        <NavReuse
+        text='YouTube Kids'
+        icon={<TbBrandYoutubeKids/>}
+        linkTo="/YouTubeKids"
+        />
+       <Div>————————————</Div>
+        <NavReuse
+        text='Settings'
+        icon={<LuSettings/>}
+        linkTo="/Settings"
+        />
+        
+        <NavReuse
+        text='Report history'
+        icon={<MdOutlineOutlinedFlag/>}
+        linkTo="/Reporthistory"
+        />
+      
+        <NavReuse
+        text='Help'
+        icon={<FiHelpCircle/>}
+        linkTo="/Help"
+       />
+        <NavReuse
+        text='Send feedback'
+        icon={ <MdOutlineFeedback/>}
+        linkTo="/Sendfeedback"
+        />
+       <Div>————————————</Div>
         <Div>
             About press copyright
         </Div>

@@ -1,20 +1,28 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import Navbar from '../blocks/Navbar'
 import Sidebar from '../blocks/Sidebar'
 import {Outlet} from "react-router-dom"
 import styled from '@emotion/styled'
+import { GlobalContext } from "../services/GlobalContext"
 
-const LayoutContainer = styled.div`
+const LayoutContainer = styled.div<{ml: string}>`
     margin-top: 90px;
-    margin-left: 200px;
+    margin-left: ${(props)=>props.ml};
+`
+
+const OutletContainer = styled.div`
+  padding: 20px;
 `
 
 const Weblayout :React.FC= () => {
+  const {toggle} = useContext (GlobalContext);
   return (
-    <LayoutContainer>
+    <LayoutContainer ml={toggle ? "100px" : "200px"}>
         <Sidebar />
-        <Navbar />      
-        <Outlet />
+        <Navbar /> 
+        <OutletContainer>     
+          <Outlet />
+        </OutletContainer>
       
     </LayoutContainer>
   )

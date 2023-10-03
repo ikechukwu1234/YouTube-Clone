@@ -1,86 +1,101 @@
-import React from 'react'
-import styled from '@emotion/styled'
-import {AiOutlineMenu, AiFillYoutube, AiOutlineSearch} from "react-icons/ai"
+import styled from "@emotion/styled";
+import React, { useContext } from "react";
+import { AiOutlineMenu } from "react-icons/ai";
+import { BsYoutube } from "react-icons/bs";
+import { BsSearch } from "react-icons/bs";
+import { BiMicrophone } from "react-icons/bi";
+import { GlobalContext } from  "../services/GlobalContext"
 
 const Container = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background-color: blue;
-    height: 80px;
-    box-shadow: rgba(0, 0, 0, 0.2);
-`
-
-const First = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  color: white;
-`
-const Second = styled.div`
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   width: 250px;
-   background-color: white;
-`
-
-const Icon1 = styled.div`
-    color: black;
-`
-
-const Third = styled.div``
+	height: 70px;
+	width: 100%;
+	position: fixed;
+	top: 0%;
+	bottom: 0;
+	left: 0;
+	z-index: 10;
+	right: 0;
+	background-color: white;
+`;
+const NavHold = styled.div`
+	display: flex;
+	/* gap:15px; */
+	margin-left: 20px;
+`;
+const Holder = styled.div`
+	display: flex;
+	gap: 5px;
+	margin-left: 20px;
+`;
 const Icon = styled.div`
-    color: white;
-`
-
-
-const YouTube = styled.div`
-    color: red;
-    span{
-        color: white;
-    }
-`
-
+	margin-top: 20px;
+	font-size: 30px;
+`;
+const LogoHold = styled.div`
+	font-size: 40px;
+	color: red;
+	margin-top: 20px;
+`;
+const Text = styled.div`
+	margin-top: 20px;
+	font-size: 25px;
+	font-weight: bold;
+	color: black;
+`;
+const InputHold = styled.div`
+	display: flex;
+	margin-top: 20px;
+	position: relative;
+	left: 200px;
+`;
 const Input = styled.input`
-    padding: 10px;
-    border: 1px solid silver;
-    border-radius: 10px;
-    height: 20px;
-    width: 100%;
+	width: 700px;
+	height: 30px;
+	background-color: #1f1f1f;
+	border-radius: 40px;
+	padding: 10px;
+	border: 1px solid gray;
+	color: white;
+`;
+const SearchHold = styled.div`
+	position: absolute;
+	right: 40px;
+	top: 10px;
+	font-size: 25px;
+`;
+const MicHold = styled.div`
+	background-color: #3d3d3d;
+	border-radius: 50px;
+	margin-left: 220px;
+	padding: 10px;
+	margin-top: 20px;
+`;
+const Speaker = styled.div`
+	font-size: 25px;
+`;
 
+const Navbar: React.FC = () => {
+	const { ToggleSideBar } = useContext(GlobalContext);
 
-`
+	return (
+		<Container>
+			<NavHold>
+				<Icon onClick={ToggleSideBar}> {<AiOutlineMenu />}</Icon>
+				<Holder>
+					<LogoHold>{<BsYoutube />}</LogoHold>
+					<Text>YOUTUBE </Text>
+				</Holder>
 
-const Navbar:React.FC = () => {
-  return (
-    <Container>
-        <First>
-            <Icon>
-            <AiOutlineMenu />
-            </Icon>
-            <YouTube>
-                <AiFillYoutube />
-                <span>YouTube</span>
-            </YouTube>
-        </First>
-        <Second>
-            <Input  placeholder='search'/>
-            <Icon1>
-                <AiOutlineSearch />
-            </Icon1>
-        </Second>
-        <Third>3</Third>
-        
-      
-    </Container>
-  )
-}
+				<InputHold>
+					<Input placeholder='search' />
+					<SearchHold>{<BsSearch />}</SearchHold>
+				</InputHold>
+				<MicHold>
+					<Speaker>{<BiMicrophone />}</Speaker>
+				</MicHold>
+			</NavHold>
+		</Container>
+	);
+};
 
-export default Navbar
+export default Navbar;
